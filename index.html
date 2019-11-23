@@ -8,6 +8,10 @@
   integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   <link rel="stylesheet" href="assets/css/style.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.5.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.5.0/firebase-database.js"></script>
+
   <title>Document</title>
 </head>
 <body>
@@ -50,11 +54,11 @@
                 <small id="firstHelp" class="form-text text-muted">Here's how to enter time</small>
               </div>
               <div class="form-group">
-                <label for="freqInput">Another label</label>
+                <label for="freqInput">Train Frequency</label>
                 <input type="text" class="form-control" id="freqInput" placeholder="8383838">
                 <small id="freqHelp" class="form-text text-muted">in minutes</small>
               </div>
-              <button type="submit" class="btn btn-primary">Submit</button>
+              <button id='submit-btn' type="submit" class="btn btn-primary">Submit</button>
             </form>
           </div>
         </div>
@@ -84,5 +88,6 @@
 
 
   </div>
+  <script src="assets/javascript/scheduler.js"></script>
 </body>
 </html>
