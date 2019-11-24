@@ -15,18 +15,18 @@ var database = firebase.database();
 
 $("#submit-btn").on("click", function(event) {
   event.preventDefault();
-console.log("bottun works");
   // Grabs user input
   var trainName = $("#nameInput").val().trim();
   var trainDest = $("#destInput").val().trim();
-  var firstTrain = $("#firstInput").val().trim();
+  var trainTime = $("#firstInput").val().trim();
   var trainFreq = $("#freqInput").val().trim();
-
+  var convertedTime = moment(trainTime, 'HH:mm');
+  // console.log(convertedTime.format('HH:mm a'));
   // Creates local "temporary" object for holding employee data
   var newTrain = {
     name: trainName,
     dest: trainDest,
-    first: firstTrain,
+    first: trainTime,
     freq: trainFreq
   };
 
@@ -38,4 +38,24 @@ console.log("bottun works");
   console.log(newTrain.dest);
   console.log(newTrain.first);
   console.log(newTrain.freq);
+  // var bob = database.val(name);
+  // console.log(bob);
+
+  // Firebase watcher + initial loader HINT: This code behaves similarly to .on("value")
+  database.ref().on("child_added", function(childSnapshot) {
+
+    // Log everything that's coming out of snapshot
+    // console.log(childSnapshot.val().name);
+
+  // });
+    // Log everything that's coming out of snapshot
+    $("#schedule").append("<div class='well'><tr class='train-name'> " +
+        childSnapshot.val().name +
+        " </tr><tr class='train-dest'> " + childSnapshot.val().dest +
+        " </tr><span class='train-time'> " + childSnapshot.val().first +
+        " </span><span class='train-freq'> " + childSnapshot.val().freq +
+        " </span></div>");
+
+  });
+
 });
